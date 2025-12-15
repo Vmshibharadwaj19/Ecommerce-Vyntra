@@ -1,4 +1,3 @@
-```bash
 # 🛒 Amazon-Style E-Commerce Application (Vyntra)
 
 A **complete full-stack e-commerce application** built using **Spring Boot (Backend)** and **React (Frontend)**.  
@@ -40,30 +39,30 @@ This project is designed to be **production-ready** and demonstrates strong back
 ## ✨ Features
 
 ### 👤 Customer Features
-- User registration and login
-- Browse products with search and filters
-- Add products to cart
-- Wishlist functionality
-- Checkout with Razorpay payment
-- Order history and tracking
-- Product reviews and ratings
-- Address management
+- User registration and login  
+- Browse products with search and filters  
+- Add products to cart  
+- Wishlist functionality  
+- Checkout with Razorpay payment  
+- Order history and tracking  
+- Product reviews and ratings  
+- Address management  
 
 ### 🧑‍💼 Seller Features
-- Seller registration (requires admin approval)
-- Add / Edit / Delete products
-- Upload multiple product images
-- Inventory management
-- View and manage received orders
-- Order status updates (Shipped / Delivered)
+- Seller registration (requires admin approval)  
+- Add / Edit / Delete products  
+- Upload multiple product images  
+- Inventory management  
+- View and manage received orders  
+- Order status updates (Shipped / Delivered)  
 
 ### 🛡️ Admin Features
-- User management (Block / Unblock)
-- Seller approval and rejection
-- Product approval and rejection
-- Category and sub-category management
-- View all orders across the system
-- Dashboard with statistics (Revenue, Orders, Users, Products)
+- User management (Block / Unblock)  
+- Seller approval and rejection  
+- Product approval and rejection  
+- Category and sub-category management  
+- View all orders across the system  
+- Dashboard with statistics (Revenue, Orders, Users, Products)  
 
 ---
 
@@ -123,43 +122,34 @@ Copy code
 ## ⚙️ Setup Instructions
 
 ### Prerequisites
-- Java 17 or higher
-- Maven 3.6+
-- MySQL 8.0+
-- Node.js 16+ and npm
-- Razorpay account (for payment integration)
+- Java 17 or higher  
+- Maven 3.6+  
+- MySQL 8.0+  
+- Node.js 16+ and npm  
+- Razorpay account  
 
 ---
 
 ## 🔧 Backend Setup
 
-1. **Navigate to project**
-```bash
-cd Ecommerce
-Create MySQL database
-
-sql
-Copy code
+### Create MySQL Database
+```sql
 CREATE DATABASE ecommerce_db;
 Configure Database
-
 properties
 Copy code
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 Configure Razorpay
-
 properties
 Copy code
 razorpay.key.id=your_razorpay_key_id
 razorpay.key.secret=your_razorpay_key_secret
 Configure JWT
-
 properties
 Copy code
 jwt.secret=YourSecretKeyForJWTTokenGenerationThatShouldBeAtLeast256BitsLong
 Run Backend
-
 bash
 Copy code
 mvn clean install
@@ -275,3 +265,6 @@ Suitable for startup and product-based company interviews
 Vamshi Prasad Goteti
 Full Stack Java Developer
 (Spring Boot | React | JPA | SQL)
+
+markdown
+Copy code
