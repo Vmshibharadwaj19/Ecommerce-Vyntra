@@ -1,3 +1,4 @@
+```
 # 🛒 Amazon-Style E-Commerce Application (Vyntra)
 
 A **production-ready full-stack e-commerce application** built using **Spring Boot (Backend)** and **React (Frontend)**.  
