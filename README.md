@@ -1,4 +1,5 @@
 # 🛒 Amazon-Style E-Commerce Application (Vyntra)
+[![Java version](https://img.shields.io/badge/Java-17+-blue)](https://www.oracle.com/java/)  [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)](https://spring.io/projects/spring-boot)  [![React](https://img.shields.io/badge/React-18+-cyan)](https://reactjs.org/)  [![MySQL](https://img.shields.io/badge/MySQL-8+-blue)](https://www.mysql.com/)  
 
 A **complete full-stack e-commerce application** built using **Spring Boot (Backend)** and **React (Frontend)**.  
 The application supports **multiple user roles**, **Razorpay payment integration**, and **real-world product approval workflows** similar to Amazon / Flipkart.
