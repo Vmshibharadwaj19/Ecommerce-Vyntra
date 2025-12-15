@@ -1,3 +1,4 @@
+```bash
 # 🛒 Amazon-Style E-Commerce Application (Vyntra)
 
 A **complete full-stack e-commerce application** built using **Spring Boot (Backend)** and **React (Frontend)**.  
@@ -67,7 +68,7 @@ This project is designed to be **production-ready** and demonstrates strong back
 ---
 
 ## 📂 Project Structure
-```
+
 Ecommerce/
 ├── src/main/java/com/ecommerce/
 │ ├── config/ # Configuration classes
