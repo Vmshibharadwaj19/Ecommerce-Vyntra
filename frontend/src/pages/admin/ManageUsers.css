@@ -1,0 +1,12 @@
+.manage-users {
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+

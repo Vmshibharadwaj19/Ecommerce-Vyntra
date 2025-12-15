@@ -1,0 +1,154 @@
+.payment-history {
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+}
+
+.payment-history .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.payment-history h2 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.no-payments {
+  text-align: center;
+  padding: 4rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.no-payments p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.payments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
+}
+
+.payment-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.payment-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.payment-id {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-failed {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-refunded {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.payment-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item .label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.detail-item .value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.refund-info {
+  color: #dc3545;
+}
+
+.refund-amount {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.payment-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.view-order-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.view-order-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+
+
