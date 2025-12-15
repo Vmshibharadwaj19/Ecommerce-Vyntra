@@ -1,283 +1,253 @@
-# Amazon-Style E-Commerce Application
+# 🛒 Amazon-Style E-Commerce Application (Vyntra)
 
-A complete full-stack e-commerce application built with Spring Boot (Backend) and React (Frontend), featuring multiple user roles, Razorpay payment integration, and comprehensive product management.
-
-## Tech Stack
-
-### Backend
-- **Spring Boot 3.2.0** (Java 17)
-- **Spring Data JPA** - Database operations
-- **Spring Security** - JWT Authentication & Authorization
-- **MySQL** - Database
-- **Razorpay** - Payment gateway
-- **Lombok** - Boilerplate code reduction
-- **ModelMapper** - DTO mapping
-- **Hibernate** - ORM
-
-### Frontend
-- **React 18.2.0**
-- **React Router 6.20.0** - Routing
-- **Axios** - HTTP client
-- **Context API** - State management
-- **CSS Modules** - Styling
-
-## Features
-
-### Customer Features
-- User registration and login
-- Browse products with search and filters
-- Add products to cart
-- Wishlist functionality
-- Checkout with Razorpay payment
-- Order history and tracking
-- Product reviews and ratings
-- Address management
-
-### Seller Features
-- Seller registration (requires admin approval)
-- Add/Edit/Delete products
-- Upload multiple product images
-- Manage inventory
-- View and manage orders
-- Order status updates (Shipped/Delivered)
-
-### Admin Features
-- User management (Block/Unblock)
-- Seller approval/rejection
-- Product approval/rejection
-- Category and subcategory management
-- View all orders system-wide
-- Dashboard with statistics (Revenue, Orders, Users, Products)
-
-## Project Structure
-
-```
-Ecommerce/
-├── src/main/java/com/ecommerce/
-│   ├── config/          # Configuration classes
-│   ├── controllers/     # REST controllers
-│   ├── dto/             # Data Transfer Objects
-│   ├── entities/        # JPA entities
-│   ├── exceptions/      # Exception handlers
-│   ├── repositories/    # Data repositories
-│   ├── security/        # Security configuration
-│   ├── services/        # Business logic
-│   └── utils/           # Utility classes
-├── frontend/
-│   ├── src/
-│   │   ├── api/         # API service files
-│   │   ├── components/  # Reusable components
-│   │   ├── context/     # Context providers
-│   │   ├── pages/       # Page components
-│   │   └── Router.jsx   # Routing configuration
-│   └── public/
-└── README.md
-```
-
-## Setup Instructions
-
-### Prerequisites
-- Java 17 or higher
-- Maven 3.6+
-- MySQL 8.0+
-- Node.js 16+ and npm
-- Razorpay account (for payment integration)
-
-### Backend Setup
-
-1. **Clone the repository**
-   ```bash
-   cd Ecommerce
-   ```
-
-2. **Configure MySQL Database**
-   - Create a MySQL database named `ecommerce_db`
-   - Update `src/main/resources/application.properties` with your database credentials:
-     ```properties
-     spring.datasource.username=your_username
-     spring.datasource.password=your_password
-     ```
-
-3. **Configure Razorpay**
-   - Get your Razorpay Key ID and Key Secret from Razorpay Dashboard
-   - Update `src/main/resources/application.properties`:
-     ```properties
-     razorpay.key.id=your_razorpay_key_id
-     razorpay.key.secret=your_razorpay_key_secret
-     ```
-
-4. **Configure JWT Secret**
-   - Update the JWT secret in `application.properties`:
-     ```properties
-     jwt.secret=YourSecretKeyForJWTTokenGenerationThatShouldBeAtLeast256BitsLong
-     ```
-
-5. **Build and Run**
-   ```bash
-   mvn clean install
-   mvn spring-boot:run
-   ```
-   The backend will start on `http://localhost:8080`
-
-### Frontend Setup
-
-1. **Navigate to frontend directory**
-   ```bash
-   cd frontend
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm start
-   ```
-   The frontend will start on `http://localhost:3000`
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/signin` - User login
-- `POST /api/auth/signup` - User registration
-- `GET /api/auth/me` - Get current user
-
-### Products
-- `GET /api/products/public` - Get all products (public)
-- `GET /api/products/public/{id}` - Get product by ID
-- `POST /api/products/search` - Search products
-- `POST /api/products` - Create product (Seller/Admin)
-- `PUT /api/products/{id}` - Update product (Seller/Admin)
-- `DELETE /api/products/{id}` - Delete product (Seller/Admin)
-
-### Cart
-- `GET /api/cart` - Get user cart
-- `POST /api/cart/add` - Add item to cart
-- `PUT /api/cart/items/{id}` - Update cart item
-- `DELETE /api/cart/items/{id}` - Remove item from cart
-- `DELETE /api/cart/clear` - Clear cart
-
-### Orders
-- `GET /api/orders` - Get user orders
-- `GET /api/orders/{id}` - Get order details
-- `POST /api/orders` - Create order
-
-### Payment
-- `POST /api/payment/create-order` - Create Razorpay order
-- `POST /api/payment/verify` - Verify payment
-
-### Admin
-- `GET /api/admin/dashboard` - Get dashboard stats
-- `GET /api/admin/users` - Get all users
-- `PUT /api/admin/users/{id}/block` - Block user
-- `PUT /api/admin/sellers/{id}/approve` - Approve seller
-- `GET /api/admin/products/pending` - Get pending products
-- `PUT /api/admin/products/{id}/approve` - Approve product
-
-## Default Roles
-
-The application supports three roles:
-- **ROLE_CUSTOMER** - Regular customers
-- **ROLE_SELLER** - Product sellers (requires admin approval)
-- **ROLE_ADMIN** - System administrators
-
-## Creating Admin User
-
-To create an admin user, you can either:
-1. Register with role `ROLE_ADMIN` (if allowed)
-2. Manually update the database to set `role = 'ROLE_ADMIN'` and `is_approved = true`
-
-## File Upload
-
-Product images are stored in the `uploads/products/` directory. Make sure this directory exists or is created automatically.
-
-## Security
-
-- JWT tokens are used for authentication
-- Passwords are encrypted using BCrypt
-- Role-based access control (RBAC) is implemented
-- CORS is configured for frontend origin
-
-## Testing
-
-### Backend Testing
-```bash
-mvn test
-```
-
-### Frontend Testing
-```bash
-cd frontend
-npm test
-```
-
-## Production Deployment
-
-### Backend
-1. Build the JAR file:
-   ```bash
-   mvn clean package
-   ```
-2. Run the JAR:
-   ```bash
-   java -jar target/ecommerce-backend-1.0.0.jar
-   ```
-
-### Frontend
-1. Build for production:
-   ```bash
-   cd frontend
-   npm run build
-   ```
-2. Serve the `build` folder using a web server (nginx, Apache, etc.)
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Error**
-   - Verify MySQL is running
-   - Check database credentials in `application.properties`
-   - Ensure database `ecommerce_db` exists
-
-2. **JWT Token Issues**
-   - Verify JWT secret is set correctly
-   - Check token expiration settings
-
-3. **Razorpay Payment Issues**
-   - Verify Razorpay credentials
-   - Check Razorpay dashboard for test/live mode
-
-4. **CORS Errors**
-   - Ensure frontend URL is added to CORS configuration
-   - Check `SecurityConfig.java` for allowed origins
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
-
-## Support
-
-For issues and questions, please create an issue in the repository.
+A **production-ready full-stack e-commerce application** built using **Spring Boot (Backend)** and **React (Frontend)**.  
+The system supports **Customer, Seller, and Admin roles**, integrates **Razorpay payments**, and implements **real-world approval workflows** similar to Amazon/Flipkart.
 
 ---
 
-**Note**: This is a production-ready application template. Make sure to:
-- Change default JWT secret in production
-- Use environment variables for sensitive data
-- Enable HTTPS in production
-- Configure proper database backups
-- Set up monitoring and logging
+## 🚀 Tech Stack
 
+### Backend
+- **Spring Boot 3.2.0** (Java 17)
+- **Spring Data JPA / Hibernate**
+- **Spring Security** (JWT Authentication & RBAC)
+- **MySQL**
+- **Razorpay Payment Gateway**
+- **Lombok**
+- **ModelMapper**
 
+### Frontend
+- **React 18.2.0**
+- **React Router v6**
+- **Axios**
+- **Context API**
+- **CSS Modules**
 
+---
+
+## 👥 User Roles
+
+- **Customer** – Shopping, orders, payments
+- **Seller** – Product & inventory management (admin approval required)
+- **Admin** – Platform control, approvals, monitoring
+
+---
+
+## ✨ Features
+
+### 👤 Customer Features
+- Registration & login
+- Product browsing with search & filters
+- Cart & wishlist
+- Razorpay checkout
+- Order history & tracking
+- Reviews & ratings
+- Address management
+
+### 🧑‍💼 Seller Features
+- Seller onboarding (admin approval)
+- Add / edit / delete products
+- Upload multiple product images
+- Inventory management
+- Order status updates
+
+### 🛡️ Admin Features
+- User block / unblock
+- Seller approval / rejection
+- Product approval workflow
+- Category & sub-category management
+- Global order visibility
+- Revenue & usage dashboard
+
+---
+
+## 📂 Project Structure
+
+Ecommerce/
+├── src/main/java/com/ecommerce/
+│ ├── config/
+│ ├── controllers/
+│ ├── dto/
+│ ├── entities/
+│ ├── exceptions/
+│ ├── repositories/
+│ ├── security/
+│ ├── services/
+│ └── utils/
+├── frontend/
+│ ├── src/
+│ │ ├── api/
+│ │ ├── components/
+│ │ ├── context/
+│ │ ├── pages/
+│ │ └── Router.jsx
+│ └── public/
+├── uploads/
+└── README.md
+
+markdown
+Copy code
+
+---
+
+## 📘 Feature & Process Documentation
+
+### 🔐 Authentication & Email
+- [Gmail App Password Setup](./GMAIL_APP_PASSWORD_SETUP.md)
+- [Order Email Notifications](./ORDER_EMAIL_NOTIFICATIONS.md)
+
+### 🛍️ Product Approval & Visibility
+- [Product Approval Guide](./PRODUCT_APPROVAL_GUIDE.md)
+- [Product Approval Process](./PRODUCT_APPROVAL_PROCESS.md)
+- [How to Approve Products](./HOW_TO_APPROVE_PRODUCTS.md)
+- [Product Approval Fix](./PRODUCT_APPROVAL_FIX.md)
+- [Product Visibility Fix](./PRODUCT_VISIBILITY_FIX.md)
+- [Quick Fix – Products Not Showing](./QUICK_FIX_PRODUCTS.md)
+
+### 💳 Payments
+- [Payment Options Guide](./PAYMENT_OPTIONS_GUIDE.md)
+- [Fix Payment Null Issue](./FIX_PAYMENT_NULL_ISSUE.md)
+
+### 🧪 Testing & Validation
+- [Operation Test Guide](./OPERATION_TEST_GUIDE.md)
+
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+- Java 17+
+- Maven 3.6+
+- MySQL 8+
+- Node.js 16+
+- Razorpay account
+
+---
+
+### 🔧 Backend Setup
+
+1. **Navigate to project**
+   ```bash
+   cd Ecommerce
+Create MySQL database
+
+sql
+Copy code
+CREATE DATABASE ecommerce_db;
+Update application.properties
+
+properties
+Copy code
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+Configure Razorpay
+
+properties
+Copy code
+razorpay.key.id=your_key
+razorpay.key.secret=your_secret
+JWT Configuration
+
+properties
+Copy code
+jwt.secret=YourStrong256BitSecretKey
+Run Backend
+
+bash
+Copy code
+mvn clean install
+mvn spring-boot:run
+Backend runs on:
+👉 http://localhost:8080
+
+🎨 Frontend Setup
+bash
+Copy code
+cd frontend
+npm install
+npm start
+Frontend runs on:
+👉 http://localhost:3000
+
+🔗 API Overview
+Authentication
+POST /api/auth/signup
+
+POST /api/auth/signin
+
+GET /api/auth/me
+
+Products
+GET /api/products/public
+
+POST /api/products
+
+PUT /api/products/{id}
+
+DELETE /api/products/{id}
+
+Cart
+GET /api/cart
+
+POST /api/cart/add
+
+DELETE /api/cart/clear
+
+Orders
+POST /api/orders
+
+GET /api/orders
+
+Payments
+POST /api/payment/create-order
+
+POST /api/payment/verify
+
+Admin
+GET /api/admin/dashboard
+
+PUT /api/admin/products/{id}/approve
+
+🔐 Security Highlights
+JWT-based authentication
+
+BCrypt password encryption
+
+Role-based access control
+
+CORS configured for frontend
+
+Secure payment verification
+
+🧪 Testing
+bash
+Copy code
+mvn test
+cd frontend && npm test
+🚀 Production Deployment
+Backend
+bash
+Copy code
+mvn clean package
+java -jar target/ecommerce-backend-1.0.0.jar
+Frontend
+bash
+Copy code
+npm run build
+Deploy build folder using Nginx / Apache.
+
+🧠 Why This Project Matters
+Real-world admin approval workflows
+
+Clean REST API design
+
+Strong Spring Security + JWT
+
+Production-ready architecture
+
+Suitable for startup & product company interviews
+
+👨‍💻 Author
+Vamshi Prasad Goteti
+Full Stack Java Developer
+(Spring Boot | React | JPA | SQL)
