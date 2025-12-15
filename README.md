@@ -65,7 +65,7 @@ This project is designed to be **production-ready** and demonstrates strong back
 - Dashboard with statistics (Revenue, Orders, Users, Products)  
 
 ---
-
+```
 ## 📂 Project Structure
 
 Ecommerce/
@@ -90,9 +90,9 @@ Ecommerce/
 ├── uploads/ # Product images
 ├── README.md
 └── *.md # Feature documentation files
-
+```
 markdown
-Copy code
+
 
 ---
 
