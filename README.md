@@ -234,6 +234,242 @@ Secure payment verification
 
 CORS configured for frontend
 
+All APIs are secured using **JWT-based authentication** and **Role-Based Access Control (RBAC)** unless marked as public.
+
+---
+
+## 🔐 Authentication & Authorization
+
+- `POST /api/auth/signup`  
+  Register a new user (Customer / Seller)
+
+- `POST /api/auth/signin`  
+  Authenticate user and return JWT token
+
+- `GET /api/auth/me`  
+  Get currently logged-in user details
+
+---
+
+## 👤 User Profile
+
+- `GET /api/users/profile`  
+  Fetch user profile details
+
+- `PUT /api/users/profile`  
+  Update user profile
+
+- `PUT /api/users/change-password`  
+  Change account password
+
+---
+
+## 🛍️ Products
+
+### Public APIs
+- `GET /api/products/public`  
+  Get all approved products
+
+- `GET /api/products/public/{productId}`  
+  Get product details by ID
+
+- `POST /api/products/search`  
+  Search products using filters and keywords
+
+- `GET /api/products/category/{categoryId}`  
+  Get products by category
+
+---
+
+### Seller APIs
+- `POST /api/products`  
+  Add a new product (Seller / Admin)
+
+- `PUT /api/products/{productId}`  
+  Update product details
+
+- `DELETE /api/products/{productId}`  
+  Delete a product
+
+- `GET /api/products/seller`  
+  Get all products added by the seller
+
+---
+
+### Admin APIs
+- `GET /api/admin/products/pending`  
+  Get products pending approval
+
+- `PUT /api/admin/products/{productId}/approve`  
+  Approve product
+
+- `PUT /api/admin/products/{productId}/reject`  
+  Reject product
+
+---
+
+## 🛒 Cart
+
+- `GET /api/cart`  
+  Get current user cart
+
+- `POST /api/cart/add`  
+  Add product to cart
+
+- `PUT /api/cart/items/{cartItemId}`  
+  Update cart item quantity
+
+- `DELETE /api/cart/items/{cartItemId}`  
+  Remove item from cart
+
+- `DELETE /api/cart/clear`  
+  Clear entire cart
+
+---
+
+## ❤️ Wishlist
+
+- `GET /api/wishlist`  
+  Get wishlist items
+
+- `POST /api/wishlist/add/{productId}`  
+  Add product to wishlist
+
+- `DELETE /api/wishlist/remove/{productId}`  
+  Remove product from wishlist
+
+---
+
+## 📦 Orders
+
+### Customer APIs
+- `POST /api/orders`  
+  Place an order
+
+- `GET /api/orders`  
+  Get all orders of the logged-in user
+
+- `GET /api/orders/{orderId}`  
+  Get order details
+
+- `PUT /api/orders/{orderId}/cancel`  
+  Cancel order
+
+---
+
+### Seller APIs
+- `GET /api/seller/orders`  
+  Get orders for seller products
+
+- `PUT /api/seller/orders/{orderId}/ship`  
+  Mark order as shipped
+
+- `PUT /api/seller/orders/{orderId}/deliver`  
+  Mark order as delivered
+
+---
+
+## 💳 Payments (Razorpay)
+
+- `POST /api/payment/create-order`  
+  Create Razorpay payment order
+
+- `POST /api/payment/verify`  
+  Verify Razorpay payment signature
+
+- `GET /api/payment/status/{orderId}`  
+  Fetch payment status
+
+---
+
+## 🏠 Address Management
+
+- `GET /api/addresses`  
+  Get saved addresses
+
+- `POST /api/addresses`  
+  Add new address
+
+- `PUT /api/addresses/{addressId}`  
+  Update address
+
+- `DELETE /api/addresses/{addressId}`  
+  Delete address
+
+---
+
+## ⭐ Reviews & Ratings
+
+- `POST /api/reviews/{productId}`  
+  Add product review
+
+- `GET /api/reviews/{productId}`  
+  Get all reviews for a product
+
+- `DELETE /api/reviews/{reviewId}`  
+  Delete review
+
+---
+
+## 🧑‍💼 Seller Management (Admin)
+
+- `GET /api/admin/sellers`  
+  Get all sellers
+
+- `PUT /api/admin/sellers/{sellerId}/approve`  
+  Approve seller
+
+- `PUT /api/admin/sellers/{sellerId}/reject`  
+  Reject seller
+
+- `PUT /api/admin/sellers/{sellerId}/block`  
+  Block seller
+
+---
+
+## 👮 User Management (Admin)
+
+- `GET /api/admin/users`  
+  Get all users
+
+- `PUT /api/admin/users/{userId}/block`  
+  Block user
+
+- `PUT /api/admin/users/{userId}/unblock`  
+  Unblock user
+
+---
+
+## 📊 Admin Dashboard
+
+- `GET /api/admin/dashboard`  
+  Fetch dashboard statistics:
+  - Total users
+  - Total sellers
+  - Total products
+  - Total orders
+  - Total revenue
+
+---
+
+## 📧 Email Notifications (Automated)
+
+Triggered automatically for:
+- Order placed
+- Order shipped
+- Order delivered
+- Order cancelled
+- Product approval / rejection
+
+Detailed implementation is available in:  
+- [ORDER_EMAIL_NOTIFICATIONS.md](./ORDER_EMAIL_NOTIFICATIONS.md)
+
+---
+
+## ✅ Interview Summary
+
+> “This application exposes **RESTful APIs** for authentication, product management, cart, orders, Razorpay payments, seller workflows, and admin approvals, secured using **JWT-based authentication and role-based access control**.”
+
 🧪 Testing
 bash
 Copy code
