@@ -1,8 +1,5 @@
 # Gmail App Password Setup Guide
 
-## ✅ Good News: SSL Certificate Issue is Fixed!
-
-The SSL certificate error is resolved. Now you just need to set up Gmail App Password for authentication.
 
 ## Why App Password?
 
