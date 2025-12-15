@@ -67,7 +67,7 @@ This project is designed to be **production-ready** and demonstrates strong back
 ---
 
 ## 📂 Project Structure
-
+```
 Ecommerce/
 ├── src/main/java/com/ecommerce/
 │ ├── config/ # Configuration classes
